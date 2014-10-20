@@ -5,7 +5,7 @@ Merge payment transaction logs so that they can be used to create magento orders
 
 Some of the orders went through paypal but magento didn't create order. So I had to parse log to grab address details from log before creating order programmatically.
 
-h2. Looking for someone who can optimize this, as it takes ages to parse and generate csv.
+##Looking for someone who can optimize this, as it takes ages to parse and generate csv.
 
 1. Export paypal transaction to csv ( **paypal.csv** ).
 2. Copy increment_ids from paypal transaction csv column and create **paypal_orders.csv**.
