@@ -17,3 +17,9 @@ Some of the orders went through paypal but magento didn't create order. So I had
 8. Now copy exported paypal transaction csv (**paypal.csv**) to shell folder where we have this parser.
 9. Then run data merge script that will merge info from log to paypal csv: `php merge_paypal.php --file missing_paid_orders.csv --data paypal.csv --logfile allLogs.log.txt`.
 10. That will generate a combined data csv (**parsed_missing_paid_orders.csv**).
+
+
+##Fix missing orders that are not searchable through magento sales grid but available on sales flat order table.
+```mysql
+INSERT INTO sales_flat_order_grid (SELECT '' as entity_id, a.`status`,a.`store_id`,a.`store_name`,a.`customer_id`,a.`base_grand_total`,a.`base_total_paid`,a.`grand_total`,a.`total_paid`,a.`increment_id`,a.`base_currency_code`,a.`order_currency_code`, CONCAT(a.`customer_firstname`, ' ', a.`customer_lastname`) as  shipping_name, CONCAT(a.`customer_firstname`, ' ', a.`customer_lastname`) as billing_name, a.`created_at`, a.`updated_at` FROM sales_flat_order a left join sales_flat_order_grid b on a.increment_id=b.increment_id where b.increment_id IS NULL order by a.entity_id desc limit 1);
+```
