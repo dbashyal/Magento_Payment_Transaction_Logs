@@ -11,7 +11,7 @@ class Salescheckorder extends Mage_Shell_Abstract
         if(!$file) {
             print "\nPlease specifiy file checkorder.php --file filename";
         }
-        $csvData = Dse_Utility::convertCsvToArray($file, ',', array('increment_id'));
+        $csvData = Utility::convertCsvToArray($file, ',', array('increment_id'));
         $fh = fopen('missing_' . $file, 'w');
         if(!$fh) {
                 print "Error opening file!";
