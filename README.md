@@ -3,7 +3,7 @@ Merge Payment Transaction Logs
 
 Merge payment transaction logs so that they can be used to create magento orders programmatically.
 
-Some of the orders went through paypal but magento didn't create order. So I had to parse log to grab address details from log before creating order programmatically.
+Some of the orders went through paypal but magento didn't create order. So I had to parse log to grab address details before creating order programmatically.
 
 ##Looking for someone who can optimize this, as it takes ages to parse and generate csv.
 
