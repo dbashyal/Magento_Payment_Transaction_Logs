@@ -17,8 +17,8 @@ class Merge_Paypal extends Mage_Shell_Abstract
                 print "\nPlease specifiy file merge_paypal.php --file filename --data paypal_data_filename --logfile allLogs.log.txt";
         }
 
-        $missingcsvData	= Dse_Utility::convertCsvToArray($file); // array(167 => array([increment_id] => 100498176))
-        $paypalcsvData	= Dse_Utility::convertCsvToArray($paypal); // array(67 => array([ Invoice Number] => 100498176))
+        $missingcsvData	= Utility::convertCsvToArray($file); // array(167 => array([increment_id] => 100498176))
+        $paypalcsvData	= Utility::convertCsvToArray($paypal); // array(67 => array([ Invoice Number] => 100498176))
 		$logData		= file_get_contents($logfile);
 		eval($logData);
 		$default = array('TOKEN', 'PAYERID', 'AMT', 'ITEMAMT', 'TAXAMT', 'SHIPPINGAMT', 'L_NUMBER0', 'L_NAME0', 'L_QTY0', 'L_AMT0', 'EMAIL', 'FIRSTNAME', 'LASTNAME', 'MIDDLENAME', 'COUNTRYCODE', 'STATE', 'CITY', 'STREET', 'ZIP', 'PHONENUM', 'SHIPTOCOUNTRYCODE', 'SHIPTOSTATE', 'SHIPTOCITY', 'SHIPTOSTREET', 'SHIPTOZIP', 'SHIPTOPHONENUM', 'SHIPTOSTREET2', 'STREET2', 'SHIPTONAME', 'CUST_EMAIL', 'TRANSACTIONID');
