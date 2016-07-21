@@ -17,7 +17,7 @@ class Datacash_CSV extends Mage_Shell_Abstract
             return;
         }
 
-        $missingIds	    = Dse_Utility::convertCsvToArray($file); // array(167 => array([increment_id] => 100498176))
+        $missingIds	    = Utility::convertCsvToArray($file); // array(167 => array([increment_id] => 100498176))
         $missing = array();
         foreach ($missingIds as $key => $value) {
             $missing[$value['increment_id']] = trim($value['increment_id']);
