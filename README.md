@@ -20,9 +20,20 @@ Some of the orders went through paypal but magento didn't create order. So I had
 
 
 ##Fix missing orders that are not searchable through magento sales grid but available on sales flat order table.
-### Check how many missing
+### Check how many orders are missing from Magento orders grid ( +archive grid for EE )
+#### Community version
 ```mysql
 SELECT COUNT(a.`entity_id`) FROM sales_flat_order a LEFT JOIN sales_flat_order_grid b ON a.increment_id=b.increment_id WHERE b.increment_id IS NULL;
+```
+#### Enterprise version
+```mysql
+SELECT COUNT(a.`entity_id`) FROM sales_flat_order a 
+LEFT JOIN sales_flat_order_grid b ON a.increment_id=b.increment_id
+LEFT JOIN enterprise_sales_order_grid_archive c ON a.increment_id=c.increment_id 
+WHERE 
+c.increment_id IS NULL
+AND
+b.increment_id IS NULL
 ```
 
 ###FIX (deprecated)
